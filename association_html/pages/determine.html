@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>信息确认</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../plug/pikaday/pikaday.css">
+</head>
+<body>
+<header>
+    <div class="wrap">
+        <div class="logo"><a href="./login.html"></a>信息确认</div>
+    </div>
+</header>
+<div id="determine">
+    <div class="wrap">
+        <ul>
+            <li>
+                <div class="input">
+                    <span class="tit">真实姓名</span> <p class="selval" onclick="_select(this)">您的帐户名</p>
+                </div>
+                <div class="select">
+                    <p class="option curr">公开</p>
+                    <p class="option">不公开</p>
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">性别</span> <p class="selval" onclick="_select(this)">您的性别</p>
+                </div>
+                <div class="select">
+                    <p class="option curr">男</p>
+                    <p class="option">女</p>
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">性别</span> <input type="text" placeholder="您的职位">
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">真实姓名</span> <p class="selval" onclick="_select(this)">您的帐户名</p>
+                </div>
+                <div class="select">
+                    <p class="option curr">公开</p>
+                    <p class="option">不公开</p>
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">爱好</span> <p class="selval" onclick="_select(this)">您的爱好</p>
+                </div>
+                <div class="select">
+                    <p class="option curr">男</p>
+                    <p class="option">女</p>
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">邮箱</span> <input type="email" placeholder="您的邮箱">
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">毕业学校</span> <input type="email" placeholder="您的毕业学校">
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">地址</span> <input type="email" placeholder="您的地址">
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">QQ</span> <input type="email" placeholder="您的QQ">
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">生日</span> <input type="text" placeholder="您的生日" id="birthday">
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">微信号</span> <input type="email" placeholder="您的微信号">
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">籍贯</span> <input type="email" placeholder="您的籍贯">
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">学历</span> <input type="email" placeholder="您的学历">
+                </div>
+            </li>
+            <li>
+                <div class="input">
+                    <span class="tit">公司</span> <input type="email" placeholder="您的公司">
+                </div>
+            </li>
+        </ul>
+        <div class="btn"><a href="javascript:void(0)">确 定</a></div>
+    </div>
+</div>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../plug/pikaday/moment.min.js"></script>
+<script src="../plug/pikaday/pikaday.js"></script>
+<script src="../js/login.js"></script>
+<script>
+    //日历
+    var i18n = {
+        previousMonth   : '上个月',
+        nextMonth       : '下个月',
+        months          : ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+        weekdays        : ['周日','周一','周二','周三','周四','周五','周六'],
+        weekdaysShort   : ['S','M','T','W','T','F','S']
+    }
+    var birthday = new Pikaday({
+        numberOfMonths: 1,
+        field:jQuery('#birthday')[0],
+        minDate: new Date('2000-01-01'),
+        maxDate: new Date('2020-12-31'),
+        yearRange: [2000,2020],
+        i18n: i18n,
+        onSelect: function() {
+            var date = document.createTextNode(this.getMoment().format('YYYY-MM-DD') + ' ');
+        }
+    });
+</script>
+</body>
+</html>
