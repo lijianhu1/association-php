@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>发起众筹一</title>
+    <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/initiate_crowd.css">
     <link rel="stylesheet" href="../plug/wangEditor/css/wangEditor.css">
 </head>
@@ -27,7 +28,7 @@
 </header>
 <div class="editext-wrap">
     <div class="step">
-        <ul>
+        <ul class="step-4 ">
             <li class="current veri"><span><i>1</i></span>
                 <p>基本信息</p>
             </li>
@@ -41,29 +42,67 @@
                 <p>回报设置</p>
             </li>
         </ul>
+        <ul class="step-3 show">
+            <li class="current info"><span><i>1</i></span>
+                <p>项目信息</p>
+            </li>
+            <li class="editext"><span><i>2</i></span>
+                <p>项目详情</p>
+            </li>
+            <li class="commodity"><span><i>3</i></span>
+                <p>回报设置</p>
+            </li>
+        </ul>
         <em class="line"></em>
         <button class="preview-btn">预览</button>
     </div>
     <div class="container release">
         <form id="signupForm">
-            <div class="item veri">
-                <h2>身份验证</h2>
-                <div class="form-group">
-                    <input type="text" placeholder="输入中文姓名" name="username"> <span class="required">* 请输入您的真实姓名</span>
-                </div>
-                <div class="form-group">
-                    <input type="text" placeholder="输入二代身份证号码" name="idcard"><span class="required">* 请输入您的身份证号码</span>
-                </div>
-                <div class="form-group">
-                    <input type="text" placeholder="手机号码" name="phone"><span class="required">* 请输入您的手机号码</span>
-                </div>
+            <div class=" crowd-type">
+                <h2>请选择你的众筹类型</h2>
+                <ul class="type-list">
+                    <li class="active">
+                        <label for="product">
+                            <h3>产品众筹</h3>
+                            <strong>需要设置截止时间，并向支持者发放回报</strong>
+                            <p>审核通过后再平台展示</p>
+                            <p>做一定时间内到达金额才算众筹成功</p>
+                        </label>
+
+                    </li>
+                    <li>
+                        <label for="help">
+                            <h3>求助众筹</h3>
+                            <strong>需要设置截止时间，并向支持者发放回报</strong>
+                            <p>审核通过后再平台展示</p>
+                            <p>做一定时间内到达金额才算众筹成功</p>
+                        </label>
+
+                    </li>
+                </ul>
+                <input type="radio" id="product" name="type"> <input type="radio" id="help" name="type">
                 <div class="btn">
-                    <a href="javascript:void(0)" class="one" data-index="info">下一步</a>
+                    <a href="javascript:void(0)" data-index="typenext">下一步</a>
                 </div>
             </div>
+            <!--<div class="item veri">-->
+                <!--<h2>身份验证</h2>-->
+                <!--<div class="form-group">-->
+                    <!--<input type="text" placeholder="输入中文姓名" name="username"> <span class="required">* 请输入您的真实姓名</span>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<input type="text" placeholder="输入二代身份证号码" name="idcard"><span class="required">* 请输入您的身份证号码</span>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<input type="text" placeholder="手机号码" name="phone"><span class="required">* 请输入您的手机号码</span>-->
+                <!--</div>-->
+                <!--<div class="btn">-->
+                    <!--<a href="javascript:void(0)" data-index="typeprev">上一步</a>-->
+                    <!--<a href="javascript:void(0)" data-index="info">下一步</a>-->
+                <!--</div>-->
+            <!--</div>-->
             <div class="item info">
                 <h2>项目信息</h2>
-
                 <div class="form-group">
                     <p class="tit">设置封面：</p>
                     <div class="con">
@@ -112,7 +151,7 @@
             <div class="item editext">
                 <h2>项目详情</h2>
                 <div id="editor-container">
-                    <textarea id="editor-trigger" style="display:none;"></textarea>
+                    <div id="textareaBox"></div>
                 </div>
                 <div class="btn">
                     <a href="javascript:void(0)" data-index="info">上一步</a>
@@ -163,7 +202,7 @@
                                 </div>
                             </div>
                             <div class="s-btn">
-                                <a href="javascript:void(0)">删除</a>
+                                <a href="javascript:void(0)" onclick="comSubDel(this)">删除</a>
                             </div>
                         </div>
                     </div>
@@ -208,7 +247,7 @@
                                 </div>
                             </div>
                             <div class="s-btn">
-                                <a href="javascript:void(0)">删除</a>
+                                <a href="javascript:void(0)" onclick="comSubDel(this)">删除</a>
                             </div>
                         </div>
 
@@ -384,14 +423,28 @@
 <script src="../js/jquery.validate.min.js"></script>
 <script src="../js/crowd_funding.js"></script>
 <script type="text/javascript">
+    $(function(){
+        $(".crowd-type").on("click","li",function(){
+            if(!$(this).hasClass('active')){
+                $(this).addClass('active').siblings().removeClass('active')
+            }
+        })
+    });
 
-    var elem = $('#editor-trigger').get(0);
-    // 通过 elem 创建编辑器
-    var editor = new wangEditor(elem);
-    // 上传图片
-    editor.config.uploadImgUrl = 'http://127.0.0.1/index.php';
-    // 表情显示项
-    editor.config.emotionsShow = 'value';
+    var editor = new wangEditor('textareaBox');
+    // 上传图片（举例）
+    editor.config.uploadImgUrl = 'file.php';
+    // 配置自定义参数（举例）
+    editor.config.uploadParams = {
+        token: 'abcdefg',
+        user: 'wangfupeng1988'
+    };
+    // 设置 headers（举例）
+    editor.config.uploadHeaders = {
+        'Accept' : 'text/x-json'
+    };
+    // 隐藏掉插入网络图片功能。该配置，只有在你正确配置了图片上传功能之后才可用。
+    editor.config.hideLinkImg = true;
     editor.create();
 </script>
 </body>

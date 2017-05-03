@@ -106,17 +106,17 @@
 .bx-wrapper .bx-prev {
 	width:40px;
 	height:40px;
-	left: 20%;
+	left: 10%;
 	border-radius:50%;
-	background:#7a7c7b url(images/arrow_left.png) no-repeat center;
+	background: url(images/arrow_left.png) no-repeat center;
 }
 
 .bx-wrapper .bx-next {
 	width:40px;
 	height:40px;
-	right: 20%;
+	right: 10%;
 	border-radius:50%;
-	background:#7a7c7b url(images/arrow_right.png) no-repeat center;
+	background: url(images/arrow_right.png) no-repeat center;
 }
 
 

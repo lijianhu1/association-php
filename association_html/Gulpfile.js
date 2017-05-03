@@ -22,7 +22,7 @@ gulp.task('sass', () =>{
             cascade : true, //是否美化属性值
             remove : true //是否去掉不必要的前缀
         }))
-        .pipe(mincss())
+        // .pipe(mincss())
         .pipe(gulp.dest(__dirname + "/css"))
         .pipe(bs.reload({stream : true}));//异步加载样式,不刷新浏览器
 });
@@ -59,7 +59,7 @@ gulp.task('serve', ['sass'], () =>{
 
     bs.init({
         server : './',
-        startPath : 'pages/login.html'
+        startPath : 'pages/index.html'
     });
 
     gulp.watch('./sass/**/*.scss', ['sass']);

@@ -2,8 +2,17 @@
 $(document).ready(function(){
     $('.release').on('click', '.btn a', function(){
         var dataInd = $(this).attr('data-index');
-        $('.release .item.' + dataInd).show().siblings().hide();
-        $('.step .' + dataInd).addClass('current').siblings().removeClass('current');
+
+        if(dataInd=='typenext'){
+            $('.crowd-type').hide().next().show();
+            $('.step').css("display","flex")
+        }else if(dataInd=='typeprev'){
+            $('.crowd-type').show().next().hide();
+            $('.step').hide();
+        }else {
+            $('.release .item.' + dataInd).show().siblings().hide();
+            $('.step .' + dataInd).addClass('current').siblings().removeClass('current');
+        }
     });
 
     $("#signupForm").validate({
@@ -109,6 +118,8 @@ $(document).ready(function(){
         $('.preview').hide()
     });
 
+
+
 });
 function handleFiles(self){
     var file = self.files[0];
@@ -118,7 +129,6 @@ function handleFiles(self){
         //监听文件读取结束后事件
         reader.onloadend = function (e) {
             $(".img").attr("src",e.target.result);    //e.target.result就是最后的路径地址
-
         };
     }
 }
@@ -132,9 +142,14 @@ function addCommod(){
         "<textarea placeholder='请填写商品内容'></textarea><p class='required'>*请填写商品内容</p></div></div><div class='form-group'>" +
         "<p class='tit'>人数限制：</p><div class='con'><p class='row'><input type='number' placeholder='0' name='comPerson"+ind+"'><span>0为不限制</span></p></div></div>" +
         "<div class='form-group'><p class='tit'>发货时间：</p><div class='con'><p class='row'><input type='number' placeholder='0' name='comTime"+ind+"'>" +
-        "<span>0为项目结束后立即发货</span></p></div></div><div class='s-btn'><a href='javascript:void(0)'>删除</a>" +
+        "<span>0为项目结束后立即发货</span></p></div></div><div class='s-btn'><a href='javascript:void(0)' onclick='comSubDel(this)'>删除</a>" +
         "<a href='javascript:void(0)'>保存</a></div></div></div>";
     $('.commod-list').append(addHtml);
+}
+
+
+function comSubDel(self){
+    $(self).parents('.commod').remove()
 }
 
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>首页</title>
+    <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../plug/banner/jquery.bxslider.css">
 </head>
@@ -15,8 +16,19 @@
             <a href="./index.html"></a>
         </div>
         <div class="user">
+            <ul class="menu">
+                <li>
+                    <a href="javascript:void(0)" class="logout">退出</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="set"></a>
+                </li>
+                <li>
+                    <a href="./news.html" class="news"><i>20</i></a>
+                </li>
+            </ul>
             <div class="username">
-                <a href="javascript:void(0)">宋小宝</a>
+                <a href="./mine/mine.html">宋小宝</a>
             </div>
             <div class="avatar">
                 <a href="javascript:void(0)"><img src="../images/crowd/avatar.png" alt=""></a>
@@ -34,13 +46,16 @@
                 <a href="./crowd_funding.html">众筹</a>
             </li>
             <li>
-                <a href="./afflatus.html">灵感贩卖</a>
+                <a href="./platform.html">平台活动</a>
             </li>
             <li>
-                <a href="./share.html">干货分享</a>
+                <a href="./welfare.html">公益活动</a>
             </li>
             <li>
-                <a href="./help.html">求助中心</a>
+                <a href="./more.html">更多功能</a>
+            </li>
+            <li>
+                <a href="./chatroom/join.html">聊天室</a>
             </li>
         </ul>
         <div class="search">
@@ -242,10 +257,16 @@
         <div class="right">
             <div class="right-item">
                 <div class="sign">
+                    <p>
+                        <span class="big">星期一</span>
+                        <span class="time">2017.03.13</span>
+                    </p>
                     <button>签到</button>
                 </div>
-                <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=2&num=2"  width="320" height="80" frameborder="0"
-                        marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                <div class="weather">
+                    <iframe src="//www.thinkpage.cn/weather/weather.aspx?uid=U87DF09632&cid=CHGD000000&l=zh-CHS&p=SMART&a=1&u=C&s=3&m=0&x=1&d=2&fc=&bgc=&bc=&ti=0&in=0&li=" frameborder="0" scrolling="no" width="320" height="110" allowTransparency="true"></iframe>
+                    <div class="wea-modal"></div>
+                </div>
             </div>
             <div class="right-item">
                 <h4>热门活动</h4>
@@ -373,6 +394,27 @@
         pager:false,
         pause:3000
     });
+    function getNowFormatDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var seperator2 = ":";
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+        return currentdate;
+    };
+    var time = getNowFormatDate();
+    var day = new Date(Date.parse(time.replace(/-/g, '/')));
+    var today = new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');
+    var week = today[day.getDay()];
+   $('.sign .time').html(time);
+    $('.sign .big').html(week);
 </script>
 </body>
 </html>

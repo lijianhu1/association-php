@@ -150,13 +150,25 @@ header{
       .login-con{
         height:280px;
         form{
+          margin-top:20px;
           .form-group{
-            height:38px;
-            border-bottom:1px solid #10db9f;
-            width:300px;
-            display:flex;
-            align-items:center;
-            margin:15px 0 35px 0;
+
+            .form-input{
+              height:38px;
+              border-bottom:1px solid #10db9f;
+              width:300px;
+              display:flex;
+              align-items:center;
+            }
+            .form-error{
+              height:30px;
+              line-height:30px;
+              text-indent:50px;
+              color:#ff2211;
+              label{
+                margin:0;
+              }
+            }
             label{
               margin:5px;
               display:flex;
@@ -166,19 +178,20 @@ header{
               height:30px;
               font-size:16px;
               text-indent:10px;
+              flex:1;
             }
           }
           .checkbox{
             color:#c2c2c2;
             display:flex;
             justify-content:space-between;
+            margin-top:20px;
             #remember{
               display:none;
             }
             label{
               display:flex;
               align-items:center;
-
               span{
                 display:flex;
                 width:13px;
@@ -187,7 +200,6 @@ header{
                 align-items:center;
                 justify-content:center;
                 margin:0 10px;
-
                 img{
                   width:10px;
                   height:8px;
@@ -268,6 +280,7 @@ header{
             text-indent:5px;
             width:80%;
           }
+
         }
         .checkbox{
           color:#c2c2c2;

@@ -1,9 +1,9 @@
-@import "./base";
+
 .container{
   display:flex;
   justify-content:center;
   background:#f5f5f5;
-  margin-top:13px;
+  padding-top:13px;
   .wrap{
     display:flex;
     .left{
@@ -253,23 +253,17 @@
         }
         .weather{
           height:140px;
-          background:#13e9b3;
           display:flex;
           align-items:center;
-          justify-content:space-around;
-          p{
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            img{
-              margin:10px 0;
-            }
-            span{
-              &.num{
-                color:#fefefe;
-                font-size:18px;
-              }
-            }
+          justify-content:center;
+          position:relative;
+          border-top:1px solid #dcdcdc;
+          .wea-modal{
+            position:absolute;
+            left:0;
+            top:0;
+            right:0;
+            bottom:0;
           }
         }
         h4{

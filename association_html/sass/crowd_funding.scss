@@ -1,9 +1,10 @@
-@import "./base";
+
 .container{
   display:flex;
   justify-content:center;
   font-size:22px;
   .wrap{
+    flex-direction:column;
     .initiat{
       display:flex;
       justify-content:flex-end;
@@ -28,7 +29,6 @@
       .sec-con{
         display:flex;
         flex-wrap:wrap;
-        
         padding:3px;
         li{
           background:#f0f0f0;
@@ -117,8 +117,21 @@
               }
             }
           }
-
+          .more{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            height:100%;
+            justify-content:center;
+            a{
+              font-size:16px;
+              font-weight:bold;
+            }
+          }
         }
+      }
+      #pages{
+        margin-top:30px;
       }
     }
   }
@@ -130,12 +143,18 @@
   .wrap{
     width:1200px;
     position:relative;
+    .banner-img{
+      width:1200px;
+      height:520px;
+    }
     .banner_text{
       position:absolute;
       top:170px;
       left:90px;
       color:#fff;
       width:676px;
+      z-index:20;
+
       h2{
         font-size:26px;
       }
@@ -174,13 +193,12 @@
       box-shadow:0 5px 10px rgba(180,180,180,0.5);
     }
     .banner_modal{
-      display:none;
       position:absolute;
       width:100%;
       height:100%;
       top:0;
       left:0;
-      background:rgba(255,255,255,0.6);
+      background:rgba(255,255,255,0.3);
       z-index:10;
 
     }

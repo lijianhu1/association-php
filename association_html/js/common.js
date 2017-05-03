@@ -19,9 +19,10 @@ $(document).ready(function(){
     });
     $('.area').on("click","button",function(){
         var text = $(this).siblings('textarea').val();
+
         var username = $('.username a').text();
         var textHtml = "<div class='friend-talk-item'><p><i>"+username+" : </i>"+text+"</p><button>评论</button></div>";
-        $('.friend-talk').append(textHtml);
+        $(this).parents('.item-con').children('.friend-talk').append(textHtml);
         $(this).parents('.area').removeClass('ac').slideUp("fast");
         $(this).siblings('textarea').val("")
     });
@@ -37,7 +38,20 @@ $(document).ready(function(){
         $(this).siblings('textarea').val("")
     });
 
+    //报名
+    $('.signBtn').on("click",function(){
+        $('#modalbg,#modal').show();
+        $('.sign-sure').click(function(){
+            $('#modal .table').hide();
+            $('#modal .msg').show();
+            $('.sign-up .signBtn').attr('disabled',true).text("已报名");
+            $('.sign-up .signed-list').children('p').hide().siblings('a').show()
 
+        })
+        $('.modal-close').click(function(){
+            $('#modal,#modalbg').hide()
+        })
+    })
 });
 function getNowFormatDate() {
     var date = new Date();

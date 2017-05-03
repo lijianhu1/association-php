@@ -10,7 +10,29 @@ $(document).ready(function(){
 
     });
 
-
+    $(".form").validate({
+        rules:{
+            username:{
+                required:true,
+            },
+            password:{
+                required:true,
+                minlength:6
+            }
+        },
+        messages:{
+            username:{
+                required:"请输入用户名"
+            },
+            password:{
+                required:"请输入密码",
+                minlength:"密码长度不能小于6"
+            }
+        },
+        errorPlacement: function(error, element) {
+            error.appendTo(element.parents('.form-group').find('.form-error'));
+        }
+    })
 });
 function remember(self){
     var check = $("#remember").is(':checked');
@@ -21,8 +43,6 @@ function remember(self){
 
     }
 }
-
-
 
 function _select(self){
     $(self).parents('li').siblings('li').find('.select').slideUp("fast");
@@ -41,6 +61,6 @@ function _select(self){
 function way(self){
     var way = $(self).attr('data-way');
     $(self).parent().addClass('active').siblings().removeClass('active');
-    $('.login-con .'+way).show().siblings().hide()
+    $('.login-con .'+way).show().siblings().hide();
 }
 
